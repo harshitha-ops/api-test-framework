@@ -3,7 +3,7 @@
 ## Run
 ```
 pip install -r requirements.txt
-python mock_app/app.py &          # sample multi-tenant API on :5000
+python mock_app/app.py &          # sample multi-tenant API on :5001
 pytest -m smoke                   # fast gate
 pytest -n 4                       # full suite in parallel
 # real service: BASE_URL=https://staging.example.com ACME_KEY=... GLOBEX_KEY=... pytest
