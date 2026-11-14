@@ -1,0 +1,24 @@
+name: api-tests
+on:
+  pull_request:
+  push: { branches: [main] }
+  schedule: [{ cron: "0 2 * * *" }]   # nightly full regression
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r requirements.txt
+      - name: Start SUT (replace with deploy-to-staging in real life)
+        run: |
+          python mock_app/app.py &
+          sleep 3
+      - name: Smoke gate
+        run: pytest -m smoke
+      - name: Full regression (parallel)
+        run: pytest -m "regression or security" -n 4
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: reports, path: reports/ }
