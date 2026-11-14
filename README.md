@@ -6,6 +6,8 @@ Python + pytest + requests framework for testing a multi-tenant SaaS REST API (P
 
 ![Architecture](architecture.png)
 
+[View the HTML test report](https://htmlpreview.github.io/?https://github.com/harshitha-ops/api-test-framework/blob/main/reports/report.html)
+
 ## What is tested
 
 | Suite | Examples |
@@ -57,6 +59,7 @@ To test a real service:
 - Allure reports and a quality dashboard
 - Jira auto-linking of failures
 - Contract testing (Pact) and performance checks (k6/JMeter)
+
 
 ## Notes
 
